@@ -3,9 +3,14 @@
  */
 
 // import ExtractTextPlugin from 'extract-text-webpack-plugin'
+
 export default {
+  /*  entry:{
+        vendors:['vue','vue-router'],
+    },*/
     output: {
         filename: 'client-bundle.js',
+        // chunkFilename: 'chunk[id].js?[chunkhash]',
     },
     devtool:'source-map',
     module: {
@@ -17,13 +22,18 @@ export default {
             },
             {
                 test:/\.jsx?$/,
-                use:'babel-loader',
+                use:[{
+                    loader:'babel-loader',
+                    options:{
+                        plugins: ['syntax-dynamic-import']
+                    }
+                }],
                 exclude:[/node_modules/],
             },
-            /*{
-                test:/\.css$/,
-                use:['style-loader','css-loader']
-            },*/
+            {
+                test:/\.(jpg|png|gif|svg)$/,
+                use:['url-loader?limit=8192']
+            },
             {
                 test:/\.scss$/,
                 use:['style-loader','css-loader','sass-loader']
@@ -33,7 +43,7 @@ export default {
     resolve: {
         extensions:['.js','.jsx','.vue'],
         alias:{
-            'vue':'vue/dist/vue.js'
+            'vue':'vue/dist/vue.common.js'
         }
     },
     plugins:[

@@ -2,13 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>vuedemo</title>
+    <style>
+        body{
+            background: url("images/1-1.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+        .temp{
+            color: red;
+        }
+    </style>
+    <script>
+        var psdWidth = 750;
+        var rootFontSize = document.documentElement.clientWidth / (psdWidth/2)*50;
+        document.querySelector('html').style.fontSize = rootFontSize +'px';
+
+    </script>
+
 </head>
 <body>
 <section id="app">
-    <div v-text="name"></div>
-    <div v-text="age"></div>
-    <test></test>
+    <router-view></router-view>
 </section>
 <script src="client-bundle.js"></script>
 </body>

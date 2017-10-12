@@ -20,6 +20,7 @@ import webpackConfig from './webpack.config.babel';
 
 const paths = {
     allScript: 'src/**/*.js?(x)',
+    allFile:'src/**/*.*',
     serverSrcJs:'src/server/**/*.js?(x)',
     sharedSrcJs:'src/shared/**/*.js?(x)',
     clientEntryPoint:'src/client/app.js',
@@ -68,7 +69,7 @@ gulp.task('main',['lint','clean'],() =>
 );
 
 gulp.task('watch', () => {
-   gulp.watch(paths.allScript,['main']);
+   gulp.watch(paths.allFile,['main']);
 });
 
 gulp.task('default',['watch','main']);

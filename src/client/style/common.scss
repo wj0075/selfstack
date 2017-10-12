@@ -1,0 +1,14 @@
+
+@function rpx($size) {
+  $tempSize: $size/100;
+  @if ($size==0){
+    @return $size;
+  }
+  @if (unit($tempSize)=='') {
+    @return $tempSize*1rem;
+  } @else if (unit($tempSize)=='px') {
+    @return $tempSize/1px*1rem;
+  } @else {
+    @return $size;
+  }
+}
